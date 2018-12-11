@@ -20,10 +20,18 @@ class Doctor
     @appointments
   end
 
-  def new_appointment(name, date)
+  def new_appointment(patient, date)
+    a = Appointment.new(date, patient, self)
+    # a.doctor = self
     # binding.pry
-    a = Appointment.new(name, date)
     @appointments << a
+    a
+  end
+
+  def patients
+    # binding.pry
+      appointments.collect {|appointment| appointment.patient}
+
   end
 
 end
